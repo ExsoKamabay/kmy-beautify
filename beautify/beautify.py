@@ -1,4 +1,3 @@
-from os import system
 from random import choice
 from time import sleep
 from timeit import default_timer
@@ -52,20 +51,17 @@ class Beautify:
         True -> return random color
         False -> return list color
         '''
+        self.color = (
+                'blue', 'blueviolet', 'lightblue', 'lightseagreen', 'limegreen', 
+                'magenta', 'maroon', 'mediumseagreen', 'mediumslateblue', 'orange', 
+                'orangered', 'olivedrab', 'cyan', 'crimson', 'saddlebrown', 'darkcyan', 
+                'darkgreen', 'darkolivegreen', 'darkslategrey', 'darkturquoise', 
+                'darkviolet', 'darkgrey', 'darkorchid'
+                    );
         if random == True:
-            return choice((
-                'blue', 'blueviolet', 'lightblue', 'lightseagreen', 'limegreen', 
-                'magenta', 'maroon', 'mediumseagreen', 'mediumslateblue', 'orange', 
-                'orangered', 'olivedrab', 'cyan', 'crimson', 'saddlebrown', 'darkcyan', 
-                'darkgreen', 'darkolivegreen', 'darkslategrey', 'darkturquoise', 
-                'darkviolet', 'darkgrey', 'darkorchid'))
+            return choice(self.color);
         else:
-            return (
-                'blue', 'blueviolet', 'lightblue', 'lightseagreen', 'limegreen', 
-                'magenta', 'maroon', 'mediumseagreen', 'mediumslateblue', 'orange', 
-                'orangered', 'olivedrab', 'cyan', 'crimson', 'saddlebrown', 'darkcyan', 
-                'darkgreen', 'darkolivegreen', 'darkslategrey', 'darkturquoise', 
-                'darkviolet', 'darkgrey', 'darkorchid')
+            return self.color;
 
     def txtclr(self,text:str='hello worlds!',color='#00e6e6',bg=None,**kwargs):
         '''
