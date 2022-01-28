@@ -25,7 +25,7 @@ from beautify import Beautify,Loading
 # Parameters
 ``ld = Loading()``
 
-``ld.loading(timeout)``
+``ld.loading(timeout:int or float)``
 
 ``ld.show(callback)``return callback
 
@@ -41,6 +41,7 @@ from beautify import Beautify,Loading
  chr_ignore:boolean,
  sep:str,
  decoration:str)``
+ 
  [font](https://www.4r7.ir/FontList.html) - [decoration](https://www.4r7.ir/DecorList.html)
  
  ``bf.colors(random:boolean)``
