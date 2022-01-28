@@ -21,3 +21,31 @@ in the testing.py file import the class from the beautify package.
 from beautify import Beautify,Loading
 ```
 <hr>
+
+# Parameters
+``ld = Loading()``
+
+``ld.loading(timeout)``
+
+``ld.show(callback)``return callback
+
+<hr>
+
+``bf = Beautify()``
+
+``bf.txtclr(
+ text:str,
+ color:str,
+ bg:str,
+ font:str,
+ chr_ignore:boolean,
+ sep:str,
+ decoration:str)``
+ [font](https://www.4r7.ir/FontList.html) - [decoration](https://www.4r7.ir/DecorList.html)
+ 
+ ``bf.colors(random:boolean)``
+ 
+ ``bf.banner(name,color,bg)`` [banner name](list_banners_name)
+ 
+ ``bf.print_menu(add_menu:list,separator:str,rw_num:boolean,color:str,bg:str)``
+ 
