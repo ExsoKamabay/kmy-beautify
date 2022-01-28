@@ -1,8 +1,11 @@
 # kmy-beautify
 
 ``beautify`` allows us to add color to text, banners, menu options in the terminal application
-## ``start work with beautify!``
-download the package in repository, before use we need to download the requirements in ``beautify/requirements.txt`` with command ``'pip install -r beautify/requirements.txt'`` ``adjust pip command which is in python3.x.x`` if you are in ``kmy-beautify`` directory
+
+```python
+# install requirements
+pip3 install art==4.8 string-color==1.2.1
+```
 
 ## [how to use!](https://www.youtube.com/watch?v=vmDmQvQ00D4)
 
@@ -13,12 +16,7 @@ download the package in repository, before use we need to download the requireme
 working directory |
       | -> beautify     |> directory package 
       | -> testing.py   |> create your working file outside the `beautify` package directory
-      
-      
-      
-in the testing.py file import the class from the beautify package.
 '''
-from beautify import Beautify,Loading
 ```
 <hr>
 
