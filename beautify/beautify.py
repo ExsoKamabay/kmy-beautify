@@ -2,7 +2,6 @@ from random import choice
 from time import sleep
 from timeit import default_timer
 from art import *
-from shell import shell
 from stringcolor import cs
 
 
