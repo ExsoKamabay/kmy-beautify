@@ -2,6 +2,7 @@ from random import choice
 from time import sleep
 from timeit import default_timer
 from art import *
+from shell import shell
 from stringcolor import cs
 
 
@@ -51,17 +52,20 @@ class Beautify:
         True -> return random color
         False -> return list color
         '''
-        self.color = (
+        if random == True:
+            return choice((
                 'blue', 'blueviolet', 'lightblue', 'lightseagreen', 'limegreen', 
                 'magenta', 'maroon', 'mediumseagreen', 'mediumslateblue', 'orange', 
                 'orangered', 'olivedrab', 'cyan', 'crimson', 'saddlebrown', 'darkcyan', 
                 'darkgreen', 'darkolivegreen', 'darkslategrey', 'darkturquoise', 
-                'darkviolet', 'darkgrey', 'darkorchid'
-                    );
-        if random == True:
-            return choice(self.color);
+                'darkviolet', 'darkgrey', 'darkorchid'))
         else:
-            return self.color;
+            return (
+                'blue', 'blueviolet', 'lightblue', 'lightseagreen', 'limegreen', 
+                'magenta', 'maroon', 'mediumseagreen', 'mediumslateblue', 'orange', 
+                'orangered', 'olivedrab', 'cyan', 'crimson', 'saddlebrown', 'darkcyan', 
+                'darkgreen', 'darkolivegreen', 'darkslategrey', 'darkturquoise', 
+                'darkviolet', 'darkgrey', 'darkorchid')
 
     def txtclr(self,text:str='hello worlds!',color='#00e6e6',bg=None,**kwargs):
         '''
@@ -87,8 +91,7 @@ class Beautify:
             with open(f'beautify/banner/{name}.txt','r') as f:
                 return cs(f.read(), color,bg)
         except:
-            return NameError(f'Invalid > {name}')
-
+            return NameError(f'Invalid {name}')
     def print_menu(self,add_menu:list[str]=None,separator='*',rw_num=True,color:str='white',bg:str=None):
         '''
         Params:
@@ -101,20 +104,23 @@ class Beautify:
         self.line = [];
         if add_menu == None:print(cs('please add menu!','red'))
         else:
+            self.result = {}
             for i in add_menu:self.line.append(len(i))
             self.separator = f'{separator*sorted(self.line)[-1]*2}';
             print(cs(f'\n{self.separator}',color,bg))
             for (i,d) in enumerate(add_menu):
                 if rw_num == True:
-                    abstr = f'0{i+1} - {d}'
-                    absbr = f'{i+1} - {d}'
+                    abstr = f'0{i+1} - {d}'.title()
+                    absbr = f'{i+1} - {d}'.title()
                     if i+1 < 10:
+                        self.result[f'0{i+1}'] = d
                         rst = int(len(self.separator)) - int(len(abstr)) - 1
                         print(cs(f'{abstr}'+' '*rst+'|', color,bg))
                     else:
+                        self.result[f'{i+1}'] = d
                         rst = int(len(self.separator)) - int(len(absbr)) - 1
                         print(cs(f'{absbr}'+' '*rst+'|', color,bg))
                 else:
                     print(cs(d, color,bg))
                 print(cs(self.separator,color,bg))
-
+            return self.result;
