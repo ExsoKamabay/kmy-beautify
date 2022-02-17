@@ -1,8 +1,30 @@
+import os
 from random import choice
 from time import sleep
 from timeit import default_timer
 from art import *
+from shell import shell
 from stringcolor import cs
+from bs4 import BeautifulSoup
+from requests import get
+from zipfile import ZipFile
+
+def download_banner():
+    req = get('https://github.com/ExsoKamabay/kmy-beautify/blob/main/beautify/banner.zip')
+    if req.status_code == 200:
+        soup = BeautifulSoup(req.content,'html.parser')
+        link = soup.find('a',id='raw-url')['data-permalink-href']
+        req1 = get(f'https://github.com{link}')
+        try:
+            open('banner.zip','wb').write(req1.content)
+            zp = ZipFile(f'banner.zip')
+            zp.extractall()
+            zp.close()
+            os.remove(f'banner.zip')
+        except:
+            pass
+    else:
+        print(f'Error response {req.status_code}')
 
 
 class Loading:
@@ -86,12 +108,25 @@ class Beautify:
                 return cs(text2art(text,'fancy90',**kwargs), color,bg)
 
     def banner(self,name:str='eagle2',color:str='blue',bg:str=None) -> str:
+        def cmd():
+            if os.name == 'nt':return 'dir';
+            else:return 'ls';
+        if 'banner' in shell(cmd()).output():
+            if not shell(f'{cmd()} banner'):
+                os.rmdir('banner');
+                download_banner();
+            else:pass
+        else:
+            print(cs('download banner..', color))
+            download_banner()
+            print(cs('selesai!', color))
         try:
-            with open(f'beautify/banner/{name}.txt','r') as f:
+            with open(f'banner/{name}.txt','r') as f:
                 return cs(f.read(), color,bg)
         except:
-            return NameError(f'Invalid {name}')
-    def print_menu(self,add_menu:list[str]=None,separator='*',rw_num=True,color:str='white',bg:str=None):
+            return NameError(f'Invalid {name}!')
+
+    def menu(self,add_menu:list[str]=None,separator='*',rw_num=True,color:str='white',bg:str=None,font=None):
         '''
         Params:
         add_menu -> type list -> default None
@@ -114,12 +149,27 @@ class Beautify:
                     if i+1 < 10:
                         self.result[f'0{i+1}'] = d
                         rst = int(len(self.separator)) - int(len(abstr)) - 1
-                        print(cs(f'{abstr}'+' '*rst+'|', color,bg))
+                        try:
+                            if font == None:
+                                print(cs(f'{abstr}'+' '*rst+'|', color,bg))
+                            else:
+                                print(cs(text2art(f'{abstr}'+' '*rst+'|',font), color,bg))
+                        except:
+                            print(f'Invalid font {foont}')
                     else:
                         self.result[f'{i+1}'] = d
                         rst = int(len(self.separator)) - int(len(absbr)) - 1
-                        print(cs(f'{absbr}'+' '*rst+'|', color,bg))
+                        if font == None:
+                            print(cs(f'{absbr}'+' '*rst+'|', color,bg))
+                        else:
+                            print(cs(text2art(f'{absbr}'+' '*rst+'|',font), color,bg))
                 else:
-                    print(cs(d, color,bg))
+                    try:
+                        if font == None:
+                            print(cs(d, color,bg))
+                        else:
+                            print(cs(text2art(d,font),color,bg))
+                    except:
+                        print(f'Invalid font {font}')
                 print(cs(self.separator,color,bg))
             return self.result;
