@@ -25,7 +25,7 @@ bf.txtclr(
     sep:str,
     decoration:str)
 bf.colors(random:bool)
-bf.banner(name:color,bg) --> str
+bf.banner(name,color,bg) --> str
 # list banner name https://github.com/ExsoKamabay/kmy-beautify/blob/main/list_banners_name
 bf.menu(
     add_menu:list,
