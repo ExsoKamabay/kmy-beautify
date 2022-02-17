@@ -1,2 +1,0 @@
-art==4.8
-string-color==1.2.1
