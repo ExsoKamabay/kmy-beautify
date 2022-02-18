@@ -2,6 +2,11 @@
 
 ``beautify`` allows us to add color to text, banners, menu options in the terminal application
 
+```python
+pip install kmy-beautify
+```
+[https://pypi.org/project/kmy-beautify/](https://pypi.org/project/kmy-beautify/)
+
 ## [how to use!](https://www.youtube.com/watch?v=vmDmQvQ00D4)
 
 [font](https://www.4r7.ir/FontList.html) - [decoration](https://www.4r7.ir/DecorList.html) - [list banner name](https://github.com/ExsoKamabay/kmy-beautify/blob/main/list_banners_name)
