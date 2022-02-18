@@ -26,6 +26,9 @@ def download_banner():
     else:
         print(f'Error response {req.status_code}')
 
+def clear():
+    if os.name == 'nt':os.system('cls')
+    else:os.system('clear')
 
 class Loading:
     def __init__(self):
@@ -44,7 +47,7 @@ class Loading:
         bg_color = bg;
         def distv(c,b):
             for i in range(5):
-                system('clear')
+                clear()
                 dsview = f"{text2art(f'{i+1*5}0%','fancy5')} {art(f'loading{i+1}')} {text2art('loading...','fancy90')}"
                 print(cs(dsview, c,b))
                 sleep(timeout)
@@ -57,11 +60,11 @@ class Loading:
         self.strt = default_timer()
         self.callback = callback
         self.stop = default_timer()
-        system('clear')
+        clear()
         dsview = f"{text2art('100%','fancy5')} {art('loading6')} {text2art('complete!','fancy90')}"
         print(cs(dsview, color,bg_color))
         sleep(float(f'{self.strt - self.stop}'.strip('-')))
-        system('clear')
+        clear()
         return self.callback;
 
 
