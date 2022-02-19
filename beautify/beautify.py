@@ -8,6 +8,7 @@ from stringcolor import cs
 from bs4 import BeautifulSoup
 from requests import get
 from zipfile import ZipFile
+from shutil import move
 
 def download_banner():
     req = get('https://github.com/ExsoKamabay/kmy-beautify/blob/main/beautify/banner.zip')
@@ -21,10 +22,34 @@ def download_banner():
             zp.extractall()
             zp.close()
             os.remove(f'banner.zip')
-        except:
-            pass
+        except:pass
+        if os.name == 'nt':
+            print(cs('memindahkan banner ke -> C:/user','blue'))
+            move('banner','C:/user')
+        else:
+            print(cs('memindahkan banner ke -> /usr','blue'))
+            try:
+                move('banner', '/usr')
+            except:
+                os.system('sudo mv banner /usr')
     else:
         print(f'Error response {req.status_code}')
+
+def path_banner():
+    if os.name == 'nt':
+        if 'banner' in shell('dir C:/user').output():pass
+        else:
+            print(cs('download banner..','blue'))
+            download_banner()
+            print(cs('selesai..','blue'))
+        return 'C:/user/banner/'
+    else:
+        if 'banner' in shell('ls /usr').output():pass
+        else:
+            print(cs('download banner..','blue'))
+            download_banner()
+            print(cs('selesai..','blue'))
+        return '/usr/banner/'
 
 def clear():
     if os.name == 'nt':os.system('cls')
@@ -111,20 +136,8 @@ class Beautify:
                 return cs(text2art(text,'fancy90',**kwargs), color,bg)
 
     def banner(self,name:str='eagle2',color:str='blue',bg:str=None) -> str:
-        def cmd():
-            if os.name == 'nt':return 'dir';
-            else:return 'ls';
-        if 'banner' in shell(cmd()).output():
-            if not shell(f'{cmd()} banner'):
-                os.rmdir('banner');
-                download_banner();
-            else:pass
-        else:
-            print(cs('download banner..', color))
-            download_banner()
-            print(cs('selesai!', color))
         try:
-            with open(f'banner/{name}.txt','r') as f:
+            with open(f'{path_banner()}{name}.txt','r') as f:
                 return cs(f.read(), color,bg)
         except:
             return NameError(f'Invalid {name}!')
@@ -158,7 +171,7 @@ class Beautify:
                             else:
                                 print(cs(text2art(f'{abstr}'+' '*rst+'|',font), color,bg))
                         except:
-                            print(f'Invalid font {foont}')
+                            print(f'Invalid font {font}')
                     else:
                         self.result[f'{i+1}'] = d
                         rst = int(len(self.separator)) - int(len(absbr)) - 1
@@ -176,3 +189,4 @@ class Beautify:
                         print(f'Invalid font {font}')
                 print(cs(self.separator,color,bg))
             return self.result;
+
