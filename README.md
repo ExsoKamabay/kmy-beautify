@@ -42,8 +42,8 @@ print(Bf.txtclr(str(menu),color=Bf.colors(random=True)))
 
 ```python
 ld = Loading()
-ld.loading(timeout:int or float)
-ld.show('hello world')
+ld.loading(timeout:int or float) # time load
+ld.show('hello world') # loaded value
 
 bf = Beautify()
 bf.txtclr(
@@ -55,7 +55,7 @@ bf.txtclr(
     sep:str,
     decoration:str)
 bf.colors(random:bool)
-bf.banner(name:color,bg) --> str
+bf.banner(name,color,bg) --> str
 # list banner name https://github.com/ExsoKamabay/kmy-beautify/blob/main/list_banners_name
 bf.menu(
     add_menu:list,
