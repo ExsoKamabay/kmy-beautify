@@ -15,6 +15,7 @@ pip install kmy-beautify
 
 ```python
 from beautify import Beautify,Loading
+from time import sleep as timeout
 
 Bf = Beautify()
 Ld = Loading()
@@ -26,8 +27,9 @@ menu = (
     'check for update'
 )
 
-# loading
+# loading menu
 Ld.loading(0.2)
+timeout(3)
 Bf.menu(Ld.show(menu),color='cyan',font='fancy102')
 
 # banner menu
