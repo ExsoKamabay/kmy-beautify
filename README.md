@@ -20,23 +20,23 @@ from time import sleep as timeout
 Bf = Beautify()
 Ld = Loading()
 
-menu_option = (
+menu_options = (
     'home',
     'about',
     'contact',
     'check for update'
 )
 
-# loading menu
+# loading menu_options
 Ld.loading(0.2)
 timeout(3)
-Bf.menu(Ld.show(menu),color='cyan',font='fancy102')
+Bf.menu(Ld.show(menu_options),color='cyan',font='fancy102')
 
-# banner menu
+# banner menu_options
 print(Bf.banner('wolf1',color=Bf.colors(random=True)))
 
 # text color
-print(Bf.txtclr(str(menu),color=Bf.colors(random=True)))
+print(Bf.txtclr(str(menu_options),color=Bf.colors(random=True)))
 
 ```
 
