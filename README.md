@@ -20,7 +20,7 @@ from time import sleep as timeout
 Bf = Beautify()
 Ld = Loading()
 
-menu = (
+menu_option = (
     'home',
     'about',
     'contact',
