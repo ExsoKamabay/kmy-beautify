@@ -7,7 +7,7 @@ pip install kmy-beautify
 ```
 [https://pypi.org/project/kmy-beautify/](https://pypi.org/project/kmy-beautify/)
 
-## [Tutorial!](https://www.youtube.com/watch?v=2pkcNTJrpNQ)
+## 👉  [Tutorial!](https://www.youtube.com/watch?v=2pkcNTJrpNQ) 👈
 
 [font](https://www.4r7.ir/FontList.html) - [decoration](https://www.4r7.ir/DecorList.html) - [list banner name](https://github.com/ExsoKamabay/kmy-beautify/blob/main/list_banners_name)
 
